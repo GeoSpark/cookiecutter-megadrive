@@ -1,0 +1,8 @@
+.idea/
+build/
+*.o
+*.swp
+*.pmp
+resources/
+venv/
+cmake_modules/

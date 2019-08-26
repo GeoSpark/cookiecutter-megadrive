@@ -1,0 +1,32 @@
+;vi: asmsyntax=asm
+                    ; Initialise 8k of memory following this program to 0.
+            XOR     a
+            LD      bc,0x1fd9
+            LD      de,0x0027
+            LD      hl,0x0026
+            LD      sp,hl
+            LD      (hl),a
+            LDIR
+
+                    ; Set all registers to 0.
+            POP     ix
+            POP     iy
+            LD      i,a
+            LD      r,a
+            POP     de
+            POP     hl
+            POP     af
+            EX      af,af'
+            EXX
+            POP     bc
+            POP     de
+            POP     hl
+            POP     af
+
+                    ; Disable interrupts and modify the start of memory to enter an infinite loop.
+            LD      sp,hl
+            DI
+            IM      1
+            LD      (hl),0xe9
+            JP      (hl)
+
