@@ -53,3 +53,5 @@ Connect to blastem via gdb:
 
    target remote | /usr/bin/blastem out.bin -D
 
+A Radare2 script file is generated that marks the .data section as data, and
+sets flags at the start of a given resource.
